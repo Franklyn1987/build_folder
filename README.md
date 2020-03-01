@@ -15,4 +15,8 @@ import build_folder as bd
 bd.build_folder(r"D:\note.txt","D:\test",False)
 ```
 
-如果False改为True，则同时生成相应的txt注释文档
+**参数1**为需要生成的文件夹名称列表所在txt文档地址；
+
+**参数2**为生成所有的文件夹所在的总目录；
+
+**参数3**为选择是否生成对应的注释文档，False改为True，则同时生成相应的txt注释文档。
