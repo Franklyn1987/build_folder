@@ -7,7 +7,7 @@
 
 import os
 import time
-print("用于批量生成文件夹，build_folder(需要生成文件夹的名称文档.txt,生成的目录所在文件夹，True则同时生成txt注释文档)")
+print("用于批量生成文件夹，build_folder(需要生成文件夹的名称文档.txt,生成的目录所在文件夹，属性),True生成对应的txt，False没有txt文档生成")
 def build_folder(readtxt_path,folder_path,typee):
 	path = folder_path 
 	with open(readtxt_path, 'r', encoding='utf-8') as f:
@@ -16,23 +16,17 @@ def build_folder(readtxt_path,folder_path,typee):
 	        if i != None:
 	            l.append(i.replace("\n", ""))
 	 
-	# 创建l中所有名字的文件夹
 	tyt=time.strftime('%Y-%m-%d', time.localtime(time.time()))
 	for i in l:
 		if i=="":
 			break
-		os.mkdir(path + '\\'+i)
+		try:
+			os.mkdir(path + '\\'+i)
+		except Exception as e:
+			print(e)
+		
 		if typee==True:
 			filename = i + ".txt"
 			fp = open(path + '\\'+filename,'w')
 			fp.write(str(tyt))
 			fp.close()
-			# print(i)
-	 
-	#创建l中所有名字的文件
-	
-	# for i in l:
-	#     f = open(i + ".txt", 'a')
-	#     f.write("")
-	#     f.close()
-# build_folder(r"D:\note.txt",r'D:\test',False)
